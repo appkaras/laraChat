@@ -26,7 +26,7 @@ class AuthController extends Controller
             return response()->json(['user'=>$user,'success'=>true]);
         }
 
-        return response()->json(['success'=>true]);
+        return response()->json(['success'=>false]);
     }
 
     public function register(Request $request){
@@ -36,11 +36,11 @@ class AuthController extends Controller
             'password' => ['required','string','min:6'],
         ])->validate();
 
-        return User::created([
+        return User::create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'password' => Hash::make($request->input('password')),
-            'api_token' => Str::random(60),
+            'api_token' => Str::random(60)
         ]);
     }
 }
