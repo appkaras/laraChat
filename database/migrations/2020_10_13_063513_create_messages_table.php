@@ -19,7 +19,7 @@ class CreateMessagesTable extends Migration
             $table->string('img')->comment('图片信息');
             $table->bigInteger('user_id');
             $table->bigInteger('room_id');
-            $table->timestamps('created_at');
+            $table->timestamp('created_at');
         });
     }
 
