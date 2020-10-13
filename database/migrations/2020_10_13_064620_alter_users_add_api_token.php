@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AlterUsersAddAvatarColumn extends Migration
+class AlterUsersAddApiToken extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class AlterUsersAddAvatarColumn extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('avatar')->after('password')->nullable()->comment('用户头像');
+            $table->string('api_token')->after('remember_token')->unique();
         });
     }
 
@@ -26,7 +26,7 @@ class AlterUsersAddAvatarColumn extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('avatar');
+            $table->dropColumn('api_token');
         });
     }
 }
